@@ -1,0 +1,96 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ejercicio;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author iris
+ */
+public class Eje {
+    public void me(){
+        List <String> Listaordenada = new ArrayList<String>();
+    String[] palabras=null;
+    String[]palabrasO = null;
+    //String[]arreglofinal = null;
+  
+    Listaordenada.add("vive y deja vivir");
+        File archivo = null;
+      FileReader fr = null;
+      BufferedReader br = null;
+      try {
+         // Apertura del fichero y creacion de BufferedReader para poder
+         // hacer una lectura comoda (disponer del metodo readLine()).
+           
+         archivo = new File ("C:\\prueba.txt");
+         fr = new FileReader (archivo);
+         br = new BufferedReader(fr);
+        //**Separar?
+        String linea; 
+           while ((linea=br.readLine())!=null){
+             palabras=linea.split(" ");
+             }
+         
+           for(String nombre: Listaordenada){
+            palabrasO = nombre.split(" ");
+            }   
+         
+        // String linea=br.readLine();
+           System.out.println("palabras del archivo");
+          for (int i = 0; i <palabras.length; i++) {
+              System.out.println(palabras[i]);   
+          }
+           System.out.println("******************");
+          System.out.println("palabras originales");
+          for (int i = 0; i <palabrasO.length; i++) {
+              System.out.println(palabrasO[i]);   
+          }           
+          System.out.println("******************");
+             String[ ]   nuevo = new  String[palabrasO.length];
+        //  System.out.println("Frase ordenada");
+          for (int i = 0; i < palabrasO.length; i++) {
+              for (int j = 0; j < palabrasO.length; j++) {
+                  if (palabrasO[i].equals(palabras[j])) {
+                      nuevo[i]=palabrasO[i];
+                      
+                  }
+              }
+          }
+           System.out.println("******************");
+          System.out.println(" final");
+          for (int i = 0; i < nuevo.length; i++) {
+              System.out.print(nuevo[i]+" ");
+          }
+       
+       
+         while((linea=br.readLine())!=null)
+            System.out.println(linea);
+      }
+     
+      catch(Exception e){
+         e.printStackTrace();
+      }finally{
+         // En el finally cerramos el fichero, para asegurarnos
+         // que se cierra tanto si todo va bien como si salta 
+         // una excepcion.
+         try{                    
+            if( null != fr ){   
+               fr.close();     
+            }                  
+         }catch (Exception e2){ 
+            e2.printStackTrace();
+         }
+      }
+          
+   
+    }
+        
+    }
